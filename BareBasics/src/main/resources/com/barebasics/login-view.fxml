@@ -28,7 +28,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="admin_form" layoutX="578.0" prefHeight="757.0" prefWidth="575.0" styleClass="right-form" stylesheets="@login.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="admin_form" layoutX="578.0" prefHeight="757.0" prefWidth="575.0" styleClass="right-form" stylesheets="@login.css" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <FontAwesomeIconView glyphName="USER" layoutX="266.0" layoutY="129.0" selectionEnd="0" size="5em" />
                   <Label layoutX="110.0" layoutY="168.0" text="Inicio de Sesión de Administrador" textFill="#0c804b">
@@ -38,8 +38,8 @@
                   </Label>
                   <PasswordField fx:id="admin_password" layoutX="172.0" layoutY="364.0" prefHeight="30.0" prefWidth="230.0" promptText="Contraseña" stylesheets="@login.css" />
                   <Button fx:id="admin_loginbtn" layoutX="242.0" layoutY="454.0" mnemonicParsing="false" styleClass="login-btn" text="Iniciar sesión" />
-                  <Hyperlink fx:id="admin_client_hyperlink" layoutX="204.0" layoutY="663.0" text="Iniciar sesión como Cliente" />
-                  <Hyperlink fx:id="admin_employee_hyperlink" layoutX="194.0" layoutY="700.0" text="Iniciar sesión como Empleado" />
+                  <Hyperlink fx:id="admin_client_hyperlink" layoutX="204.0" layoutY="663.0" onAction="#switchForm" text="Iniciar sesión como Cliente" />
+                  <Hyperlink fx:id="admin_employee_hyperlink" layoutX="194.0" layoutY="700.0" onAction="#switchForm" text="Iniciar sesión como Empleado" />
                   <TextField fx:id="admin_username" layoutX="172.0" layoutY="299.0" prefHeight="30.0" prefWidth="230.0" promptText="Nombre de usuario" />
                   <Button layoutX="515.0" layoutY="-1.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="62.0" styleClass="close" />
                   <FontAwesomeIconView glyphName="CLOSE" layoutX="537.0" layoutY="23.0" size="2em" />
@@ -55,14 +55,14 @@
                   </Label>
                   <PasswordField fx:id="employee_password" layoutX="172.0" layoutY="364.0" prefHeight="30.0" prefWidth="230.0" promptText="Contraseña" stylesheets="@login.css" />
                   <Button fx:id="employee_loginbtn" layoutX="242.0" layoutY="454.0" mnemonicParsing="false" styleClass="login-btn" text="Iniciar sesión" />
-                  <Hyperlink fx:id="employee_customer_hyperlink" layoutX="204.0" layoutY="663.0" text="Iniciar sesión como Cliente" />
-                  <Hyperlink fx:id="employee_admin_hyperlink" layoutX="177.0" layoutY="700.0" text="Iniciar sesión como Administrador" />
+                  <Hyperlink fx:id="employee_customer_hyperlink" layoutX="204.0" layoutY="663.0" onAction="#switchForm" text="Iniciar sesión como Cliente" />
+                  <Hyperlink fx:id="employee_admin_hyperlink" layoutX="177.0" layoutY="700.0" onAction="#switchForm" text="Iniciar sesión como Administrador" />
                   <TextField fx:id="employee_username" layoutX="172.0" layoutY="299.0" prefHeight="30.0" prefWidth="230.0" promptText="ID de Empleado" />
                   <Button layoutX="513.0" layoutY="-1.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="62.0" styleClass="close" />
                   <FontAwesomeIconView glyphName="CLOSE" layoutX="535.0" layoutY="22.0" size="2em" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="customer_form" layoutX="598.0" layoutY="20.0" prefHeight="757.0" prefWidth="575.0" styleClass="right-form" stylesheets="@login.css" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="customer_form" layoutX="598.0" layoutY="20.0" prefHeight="757.0" prefWidth="575.0" styleClass="right-form" stylesheets="@login.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <FontAwesomeIconView glyphName="USER" layoutX="266.0" layoutY="129.0" selectionEnd="0" size="5em" />
                   <Label layoutX="150.0" layoutY="173.0" text="Inicio de Sesión de Cliente" textFill="#0c804b">
@@ -72,8 +72,8 @@
                   </Label>
                   <PasswordField fx:id="customer_password" layoutX="172.0" layoutY="364.0" prefHeight="30.0" prefWidth="230.0" promptText="Contraseña" stylesheets="@login.css" />
                   <Button fx:id="customer_loginbtn" layoutX="242.0" layoutY="454.0" mnemonicParsing="false" styleClass="login-btn" text="Iniciar sesión" />
-                  <Hyperlink fx:id="customer_admin_hyperlink" layoutX="178.0" layoutY="660.0" text="Iniciar sesión como Administrador" />
-                  <Hyperlink fx:id="customer_employee_hyperlink" layoutX="190.0" layoutY="699.0" text="Iniciar sesión como Empleado" />
+                  <Hyperlink fx:id="customer_admin_hyperlink" layoutX="178.0" layoutY="660.0" onAction="#switchForm" text="Iniciar sesión como Administrador" />
+                  <Hyperlink fx:id="customer_employee_hyperlink" layoutX="190.0" layoutY="699.0" onAction="#switchForm" text="Iniciar sesión como Empleado" />
                   <TextField fx:id="customer_username" layoutX="172.0" layoutY="299.0" prefHeight="30.0" prefWidth="230.0" promptText="ID de Socio" />
                   <Button layoutX="513.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="62.0" styleClass="close" />
                   <FontAwesomeIconView glyphName="CLOSE" layoutX="535.0" layoutY="22.0" size="2em" />
