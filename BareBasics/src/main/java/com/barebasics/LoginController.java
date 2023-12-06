@@ -84,6 +84,106 @@ public class LoginController implements Initializable {
     private ResultSet result;
     private PreparedStatement prepare;
 
+    public void customerLogin(){
+        String employeeData = "SELECT * FROM customer WHERE customer_id = ? and password = ?";
+
+        connect = database.connectDb();
+
+        try {
+            Alert alert;
+            prepare = connect.prepareStatement(employeeData);
+
+            if (customer_username.getText().isEmpty() ||
+                    customer_password.getText().isEmpty()){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Mensaje de error");
+                alert.setHeaderText(null);
+                alert.setContentText("Por favor llena todos los campos vacíos");
+                alert.showAndWait();
+            } else {
+                prepare.setString(1, customer_username.getText());
+                prepare.setString(2, customer_password.getText());
+
+                result = prepare.executeQuery();
+
+                if (result.next()){
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Mensaje informativo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Ha iniciado sesión exitosamente");
+                    alert.showAndWait();
+
+                    customer_loginbtn.getScene().getWindow().hide();
+
+                    Parent root = FXMLLoader.load(getClass().getResource("customerDashboard.fxml"));
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Mensaje de error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("ID de Socio / Contraseña errónea");
+                    alert.showAndWait();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void employeeLogin(){
+        String employeeData = "SELECT * FROM employee WHERE employee_id = ? and password = ?";
+
+        connect = database.connectDb();
+
+        try {
+            Alert alert;
+            prepare = connect.prepareStatement(employeeData);
+
+            if (employee_username.getText().isEmpty() ||
+            employee_password.getText().isEmpty()){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Mensaje de error");
+                alert.setHeaderText(null);
+                alert.setContentText("Por favor llena todos los campos vacíos");
+                alert.showAndWait();
+            } else {
+                prepare.setString(1, employee_username.getText());
+                prepare.setString(2, employee_password.getText());
+
+                result = prepare.executeQuery();
+
+                if (result.next()){
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Mensaje informativo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Ha iniciado sesión exitosamente");
+                    alert.showAndWait();
+
+                    employee_loginbtn.getScene().getWindow().hide();
+
+                    Parent root = FXMLLoader.load(getClass().getResource("employeeDashboard.fxml"));
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Mensaje de error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("ID de Empleado / Contraseña errónea");
+                    alert.showAndWait();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void adminLogin() {
         String adminData = "SELECT * FROM admin WHERE username = ? and password = ?";
 
