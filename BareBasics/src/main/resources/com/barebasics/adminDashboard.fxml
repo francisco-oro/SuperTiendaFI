@@ -3,10 +3,12 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -87,22 +89,22 @@
                               <FontAwesomeIconView fill="WHITE" glyphName="CART_ARROW_DOWN" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Retiros / Depósitos">
+                        <Button layoutX="8.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Retiros">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="MONEY" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="383.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Ventas">
+                        <Button layoutX="8.0" layoutY="424.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Ventas">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="LINE_CHART" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="453.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Mi cuenta">
+                        <Button layoutX="8.0" layoutY="494.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Mi cuenta">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="10.0" layoutY="506.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Cerrar Sesión">
+                        <Button layoutX="10.0" layoutY="606.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Cerrar Sesión">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="1.8em" />
                            </graphic>
@@ -114,9 +116,14 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="8.0" layoutY="418.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Sucursales">
+                        <Button layoutX="8.0" layoutY="459.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Sucursales">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="1.8em" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="383.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Depósitos">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="MONEY" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
                      </children>
@@ -127,7 +134,7 @@
                   </AnchorPane>
                </left>
                <center>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
                      <children>
                         <AnchorPane prefHeight="555.0" prefWidth="903.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -342,7 +349,7 @@
                               <Button layoutX="469.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="delete-btn" text="Borrar" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css">
+                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -437,6 +444,222 @@
                                     </Label>
                                     <ComboBox layoutX="194.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" />
                                     <Button layoutX="478.0" layoutY="5.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="93.0" styleClass="delete-btn" text="Cancelar" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="151.0" prefWidth="955.0">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="6.0" text="Agregar nuevo depósito" textFill="#118d45">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="15.0" layoutY="76.0" text="Tipo de depósito*">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="14.0" layoutY="101.0" prefHeight="30.0" prefWidth="150.0" />
+                                    <Label layoutX="188.0" layoutY="76.0" text="Referencia*">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="188.0" layoutY="102.0" prefHeight="30.0" />
+                                    <DatePicker layoutX="367.0" layoutY="102.0" prefHeight="30.0" styleClass="combo-box" />
+                                    <TextField layoutX="576.0" layoutY="102.0" prefHeight="30.0" />
+                                    <Label layoutX="367.0" layoutY="76.0" text="Fecha">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="576.0" layoutY="76.0" text="Monto">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="791.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Registrar depósito" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="181.0" prefHeight="440.0" prefWidth="955.0">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="928.0">
+                                      <columns>
+                                        <TableColumn prefWidth="225.0" text="Referencia" />
+                                        <TableColumn prefWidth="196.0" text="Tipo de depósito" />
+                                          <TableColumn prefWidth="198.0" text="Fecha" />
+                                          <TableColumn minWidth="6.0" prefWidth="162.0" text="Monto" />
+                                          <TableColumn minWidth="0.0" prefWidth="145.0" text="Usuario" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="12.0" layoutY="15.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="151.0" prefWidth="955.0">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="6.0" text="Hacer un nuevo retiro" textFill="#118d45">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="15.0" layoutY="76.0" text="Categoría de retiro*">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="14.0" layoutY="101.0" prefHeight="30.0" prefWidth="150.0" />
+                                    <TextField layoutX="188.0" layoutY="102.0" prefHeight="30.0" />
+                                    <TextField layoutX="368.0" layoutY="102.0" prefHeight="30.0" />
+                                    <Label layoutX="188.0" layoutY="76.0" text="Monto a retirar*">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="368.0" layoutY="76.0" text="Monto disponible*">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="555.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Confimar retiro" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="181.0" prefHeight="440.0" prefWidth="955.0">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="928.0">
+                                       <columns>
+                                          <TableColumn prefWidth="187.0" text="No. de autorización" />
+                                          <TableColumn prefWidth="234.0" text="Categoría" />
+                                          <TableColumn prefWidth="198.0" text="Fecha" />
+                                          <TableColumn minWidth="6.0" prefWidth="162.0" text="Monto" />
+                                          <TableColumn minWidth="0.0" prefWidth="145.0" text="Usuario" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="15.0" layoutY="11.0" prefHeight="633.0" prefWidth="976.0" stylesheets="@dashboard.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <AnchorPane layoutX="12.0" layoutY="14.0" prefHeight="266.0" prefWidth="314.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="11.0" text="Ventas por persona - anual" textFill="#118d45">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <BarChart layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="331.0" layoutY="14.0" prefHeight="266.0" prefWidth="314.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="11.0" text="Ventas por sucursal - anual" textFill="#118d45">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <BarChart layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="648.0" layoutY="14.0" prefHeight="266.0" prefWidth="314.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="11.0" text="Ventas por producto - anual" textFill="#118d45">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <BarChart layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="293.0" prefHeight="326.0" prefWidth="947.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="11.0" text="Ventas totales - Tendencia" textFill="#118d45">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <BarChart layoutX="14.0" layoutY="33.0" prefHeight="268.0" prefWidth="896.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
                                  </children>
                               </AnchorPane>
                            </children>
