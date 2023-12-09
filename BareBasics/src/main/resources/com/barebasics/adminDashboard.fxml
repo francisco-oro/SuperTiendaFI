@@ -282,6 +282,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
+                        <FontAwesomeIconView />
                         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
@@ -568,7 +569,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="15.0" layoutY="11.0" prefHeight="633.0" prefWidth="976.0" stylesheets="@dashboard.css">
+                        <AnchorPane layoutX="15.0" layoutY="11.0" prefHeight="633.0" prefWidth="976.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -662,6 +663,39 @@
                                     </BarChart>
                                  </children>
                               </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="12.0" layoutY="11.0" prefHeight="635.0" prefWidth="980.0">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <AnchorPane prefHeight="58.0" prefWidth="980.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Button layoutX="855.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Agregar">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
+                                       </graphic>
+                                    </Button>
+                                    <FontAwesomeIconView fill="#118d45" glyphName="BARS" layoutX="14.0" layoutY="35.0" size="2em" />
+                                    <Label layoutX="58.0" layoutY="15.0" text="Mis sucursales" textFill="#118d45">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <TableView layoutX="14.0" layoutY="71.0" prefHeight="555.0" prefWidth="955.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Nombre" />
+                                  <TableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                              </TableView>
                            </children>
                         </AnchorPane>
                      </children>
