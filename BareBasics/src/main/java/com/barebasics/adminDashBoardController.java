@@ -1,6 +1,8 @@
 package com.barebasics;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +12,12 @@ import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -35,7 +39,7 @@ public class adminDashBoardController implements Initializable {
     private TextField addProduct_brand;
 
     @FXML
-    private ComboBox<?> addProduct_category;
+    private ComboBox<Category> addProduct_category;
 
     @FXML
     private Button addProduct_clearBtn;
@@ -44,25 +48,25 @@ public class adminDashBoardController implements Initializable {
     private TextField addProduct_code;
 
     @FXML
-    private TableColumn<?, ?> addProduct_col_availableStock;
+    private TableColumn<productData, String> addProduct_col_availableStock;
 
     @FXML
-    private TableColumn<?, ?> addProduct_col_brand;
+    private TableColumn<productData, String> addProduct_col_brand;
 
     @FXML
-    private TableColumn<?, ?> addProduct_col_category;
+    private TableColumn<productData, String> addProduct_col_category;
 
     @FXML
-    private TableColumn<?, ?> addProduct_col_code;
+    private TableColumn<productData, String> addProduct_col_code;
 
     @FXML
-    private TableColumn<?, ?> addProduct_col_cost;
+    private TableColumn<productData, String> addProduct_col_cost;
 
     @FXML
-    private TableColumn<?, ?> addProduct_col_lastUpdated;
+    private TableColumn<productData, String> addProduct_col_lastUpdated;
 
     @FXML
-    private TableColumn<?, ?> addProduct_col_name;
+    private TableColumn<productData, String> addProduct_col_name;
 
     @FXML
     private TextField addProduct_cost;
@@ -80,7 +84,7 @@ public class adminDashBoardController implements Initializable {
     private TextField addProduct_searchBar;
 
     @FXML
-    private TableView<?> addProduct_tableView;
+    private TableView<productData> addProduct_tableView;
 
     @FXML
     private Button addProduct_updateBtn;
@@ -424,6 +428,88 @@ public class adminDashBoardController implements Initializable {
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
+
+    public ObservableList<productData> addProductsListData() {
+        ObservableList<productData> prodList = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM product as p inner join category c on p.category_id = c.Id";
+
+        connect = database.connectDb();
+
+        try {
+            productData prod;
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                prod = new productData(result.getString("product_id"),
+                        result.getString("brand"),
+                        result.getString("product_name"),
+                        result.getString("categoryName"),
+                        result.getDouble("price"),
+                        result.getInt("units")
+                        );
+                prodList.add(prod);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return prodList;
+    }
+
+    public ObservableList<Category> categoryListData() {
+        ObservableList<Category> catList = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM category";
+
+        connect = database.connectDb();
+
+        try {
+            Category category;
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                category = new Category(result.getInt("Id"),
+                        result.getString("categoryName"));
+                catList.add(category);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return catList;
+    }
+
+    private ObservableList<productData> addProductsList;
+    private ObservableList<Category> categoryList;
+//    shows the data in a table view
+    public void addProductsShowData() {
+        addProductsList = addProductsListData();
+        categoryList = categoryListData();
+        addProduct_col_code.setCellValueFactory(new PropertyValueFactory<>("productId"));
+        addProduct_col_brand.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        addProduct_col_name.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        addProduct_col_category.setCellValueFactory(new PropertyValueFactory<>("Category"));
+        addProduct_col_cost.setCellValueFactory(new PropertyValueFactory<>("price"));
+        addProduct_col_availableStock.setCellValueFactory(new PropertyValueFactory<>("units"));
+
+        addProduct_category.setItems(categoryList);
+
+        addProduct_tableView.setItems(addProductsList);
+    }
+
+    public void addProductsSelect() {
+        productData prod = addProduct_tableView.getSelectionModel().getSelectedItem();
+        int num = addProduct_tableView.getSelectionModel().getSelectedIndex();
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
+        addProduct_code.setText(prod.getProductId());
+        addProduct_brand.setText(prod.getBrand());
+        addProduct_name.setText(prod.getProductName());
+        addProduct_cost.setText(prod.getPrice().toString());
+        addProduct_category.setValue(prod.getCategory());
+    }
     public void logout(){
         try {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -464,6 +550,7 @@ public class adminDashBoardController implements Initializable {
         } catch (Exception e) { e.printStackTrace();}
     }
 
+//    Switching navbar buttons
     public void switchForm(ActionEvent event) {
         if(event.getSource() == dashboard_btn) {
             switchVisibility(dashboard_form, addProduct_form, employees_form, orders_form, withdrawal_form, deposit_form, sales_form, stores_form, profile_form);
@@ -472,7 +559,7 @@ public class adminDashBoardController implements Initializable {
         } else if (event.getSource() == addProducts_btn) {
             switchVisibility(addProduct_form, employees_form, orders_form, withdrawal_form, deposit_form, sales_form, stores_form, profile_form, dashboard_form);
             switchStyle(addProducts_btn, dashboard_btn, employees_btn, orders_btn, withdrawal_btn, deposit_btn, sales_btn, stores_btn, profile_btn);
-
+            addProductsShowData();
         } else if (event.getSource() == employees_btn) {
             switchVisibility(employees_form, addProduct_form, orders_form, withdrawal_form, deposit_form, sales_form, stores_form, profile_form, dashboard_form);
             switchStyle(employees_btn, addProducts_btn, dashboard_btn, orders_btn, withdrawal_btn, deposit_btn, sales_btn, stores_btn, profile_btn);
@@ -527,6 +614,6 @@ public class adminDashBoardController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        addProductsShowData();
     }
 }
