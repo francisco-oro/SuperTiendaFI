@@ -11,7 +11,7 @@ public class database {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/barebasics", "root", "anita");
+            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/barebasics", "root","");
             return connect;
         } catch (Exception e) {
             e.printStackTrace();

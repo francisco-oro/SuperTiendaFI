@@ -11,8 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -21,6 +23,14 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+    //    DATABASE TOOS
+    private Connection connect;
+    private ResultSet result;
+    private PreparedStatement prepare;
+
+    private double x = 0;
+    private double y = 0;
+
     @FXML
     private Hyperlink admin_client_hyperlink;
 
@@ -79,11 +89,6 @@ public class LoginController implements Initializable {
         System.exit(0);
     }
 
-//    DATABASE TOOS
-    private Connection connect;
-    private ResultSet result;
-    private PreparedStatement prepare;
-
     public void customerLogin(){
         String employeeData = "SELECT * FROM customer WHERE customer_id = ? and password = ?";
 
@@ -119,6 +124,18 @@ public class LoginController implements Initializable {
 
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
+
+                    root.setOnMousePressed((MouseEvent event) -> {
+                        x = event.getSceneX();
+                        y = event.getSceneY();
+                    });
+
+                    root.setOnMouseDragged((MouseEvent event) -> {
+                        stage.setX(event.getScreenX()  - x);
+                        stage.setY(event.getScreenY()  - y);
+                    });
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
 
                     stage.setScene(scene);
                     stage.show();
@@ -169,6 +186,18 @@ public class LoginController implements Initializable {
 
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
+
+                    root.setOnMousePressed((MouseEvent event) -> {
+                        x = event.getSceneX();
+                        y = event.getSceneY();
+                    });
+
+                    root.setOnMouseDragged((MouseEvent event) -> {
+                        stage.setX(event.getScreenX()  - x);
+                        stage.setY(event.getScreenY()  - y);
+                    });
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
 
                     stage.setScene(scene);
                     stage.show();
@@ -221,6 +250,18 @@ public class LoginController implements Initializable {
 
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
+
+                root.setOnMousePressed((MouseEvent event) -> {
+                    x = event.getSceneX();
+                    y = event.getSceneY();
+                } );
+
+                root.setOnMouseDragged((MouseEvent event) -> {
+                    stage.setX(event.getScreenX() - x);
+                    stage.setY(event.getScreenY() - y);
+                });
+
+                stage.initStyle(StageStyle.TRANSPARENT);
 
                 stage.setScene(scene);
                 stage.show();

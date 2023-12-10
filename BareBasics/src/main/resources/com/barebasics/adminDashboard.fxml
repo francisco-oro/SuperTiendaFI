@@ -10,6 +10,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -23,9 +24,9 @@
   ~ Copyright (c) 2023. 
   -->
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barebasics.adminDashBoardController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane layoutX="193.0" layoutY="32.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <top>
@@ -33,12 +34,12 @@
                      <children>
                         <AnchorPane layoutX="22.0" layoutY="-86.0" prefHeight="34.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboard.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button layoutX="1048.0" layoutY="5.0" mnemonicParsing="false" styleClass="close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                              <Button layoutX="1048.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" styleClass="close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                                  <graphic>
-                                    <FontAwesomeIconView glyphName="CLOSE" textAlignment="CENTER" wrappingWidth="29.428571701049805" />
+                                    <FontAwesomeIconView fx:id="close" glyphName="CLOSE" textAlignment="CENTER" wrappingWidth="29.428571701049805" />
                                  </graphic>
                               </Button>
-                              <Button layoutX="1106.0" layoutY="2.0" mnemonicParsing="false" styleClass="minimize">
+                              <Button fx:id="minimize" layoutX="1106.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" styleClass="minimize">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="MINUS" textAlignment="CENTER" wrappingWidth="29.428571701049805" />
                                  </graphic>
@@ -63,48 +64,48 @@
                               <Font name="Tahoma" size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="6.0" layoutY="146.0" prefHeight="23.0" prefWidth="186.0" text="Francisco" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="username" alignment="CENTER" layoutX="6.0" layoutY="146.0" prefHeight="23.0" prefWidth="186.0" text="Francisco" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Tahoma Bold" size="20.0" />
                            </font>
                         </Label>
                         <Line endX="100.0" layoutX="82.0" layoutY="178.0" startX="-65.5" stroke="WHITE" />
-                        <Button layoutX="8.0" layoutY="206.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Tablero">
+                        <Button fx:id="dashboard_btn" layoutX="8.0" layoutY="206.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Tablero">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="DASHBOARD" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="241.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Agregar productos">
+                        <Button fx:id="addProducts_btn" layoutX="8.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Agregar productos">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="PLUS_CIRCLE" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="278.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Empleados">
+                        <Button fx:id="employees_btn" layoutX="8.0" layoutY="278.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Empleados">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="USERS" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="9.0" layoutY="313.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Órdenes de stock">
+                        <Button fx:id="orders_btn" layoutX="9.0" layoutY="313.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Órdenes de stock">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="CART_ARROW_DOWN" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Retiros">
+                        <Button fx:id="withdrawal_btn" layoutX="8.0" layoutY="348.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Retiros">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="MONEY" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="424.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Ventas">
+                        <Button fx:id="sales_btn" layoutX="8.0" layoutY="424.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Ventas">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="LINE_CHART" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="8.0" layoutY="494.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Mi cuenta">
+                        <Button fx:id="profile_btn" layoutX="8.0" layoutY="494.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Mi cuenta">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" selectionEnd="0" size="1.8EM" />
                            </graphic>
                         </Button>
-                        <Button layoutX="10.0" layoutY="606.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Cerrar Sesión">
+                        <Button fx:id="logout" layoutX="10.0" layoutY="606.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="180.0" text="Cerrar Sesión">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="1.8em" />
                            </graphic>
@@ -116,12 +117,12 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="8.0" layoutY="459.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Sucursales">
+                        <Button fx:id="stores_btn" layoutX="8.0" layoutY="459.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Sucursales">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="1.8em" />
                            </graphic>
                         </Button>
-                        <Button layoutX="10.0" layoutY="383.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Depósitos">
+                        <Button fx:id="deposit_btn" layoutX="10.0" layoutY="383.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btn" text="Depósitos">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="MONEY" selectionEnd="0" size="1.8EM" />
                            </graphic>
@@ -136,7 +137,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane prefHeight="555.0" prefWidth="903.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboard_form" prefHeight="555.0" prefWidth="903.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="13.0" prefHeight="629.0" prefWidth="977.0" stylesheets="@dashboard.css">
                                  <children>
@@ -154,7 +155,7 @@
                                                       <Font name="Tahoma" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label alignment="CENTER_RIGHT" layoutX="99.0" layoutY="14.0" prefHeight="22.0" prefWidth="144.0" text="0" textFill="WHITE">
+                                                <Label fx:id="dashboard_activeEmployees" alignment="CENTER_RIGHT" layoutX="99.0" layoutY="14.0" prefHeight="22.0" prefWidth="144.0" text="0" textFill="WHITE">
                                                    <font>
                                                       <Font name="Berlin Sans FB" size="20.0" />
                                                    </font>
@@ -169,7 +170,7 @@
                                                       <Font name="Tahoma" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label alignment="CENTER_RIGHT" layoutX="98.0" layoutY="14.0" prefHeight="22.0" prefWidth="144.0" text="\$0.0" textFill="WHITE">
+                                                <Label fx:id="dashboard_incomeToday" alignment="CENTER_RIGHT" layoutX="98.0" layoutY="14.0" prefHeight="22.0" prefWidth="144.0" text="\$0.0" textFill="WHITE">
                                                    <font>
                                                       <Font name="Berlin Sans FB" size="20.0" />
                                                    </font>
@@ -184,7 +185,7 @@
                                                       <Font name="Tahoma" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label alignment="CENTER_RIGHT" layoutX="98.0" layoutY="14.0" prefHeight="22.0" prefWidth="144.0" text="\$0.0" textFill="WHITE">
+                                                <Label fx:id="dashboard_incomeTotal" alignment="CENTER_RIGHT" layoutX="98.0" layoutY="14.0" prefHeight="22.0" prefWidth="144.0" text="\$0.0" textFill="WHITE">
                                                    <font>
                                                       <Font name="Berlin Sans FB" size="20.0" />
                                                    </font>
@@ -193,7 +194,7 @@
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <AreaChart layoutX="35.0" layoutY="178.0" prefHeight="435.0" prefWidth="923.0" title="Ingresos">
+                                    <AreaChart fx:id="dashboard_chart" layoutX="35.0" layoutY="178.0" prefHeight="435.0" prefWidth="923.0" title="Ingresos">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>
@@ -209,7 +210,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="141.0" layoutY="118.0" prefHeight="555.0" prefWidth="903.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="addProduct_form" layoutX="141.0" layoutY="118.0" prefHeight="555.0" prefWidth="903.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="634.0" prefWidth="239.0" stylesheets="@dashboard.css">
                                  <styleClass>
@@ -222,41 +223,41 @@
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="15.0" layoutY="49.0" prefHeight="30.0" prefWidth="200.0" />
+                                    <TextField fx:id="addProduct_code" layoutX="15.0" layoutY="49.0" prefHeight="30.0" prefWidth="200.0" />
                                     <Label layoutX="17.0" layoutY="89.0" prefHeight="18.0" prefWidth="200.0" text="Marca:">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="17.0" layoutY="114.0" prefHeight="30.0" prefWidth="200.0" />
+                                    <TextField fx:id="addProduct_brand" layoutX="17.0" layoutY="114.0" prefHeight="30.0" prefWidth="200.0" />
                                     <Label layoutX="17.0" layoutY="154.0" prefHeight="18.0" prefWidth="200.0" text="Nombre de producto:">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="17.0" layoutY="179.0" prefHeight="30.0" prefWidth="200.0" />
+                                    <TextField fx:id="addProduct_name" layoutX="17.0" layoutY="179.0" prefHeight="30.0" prefWidth="200.0" />
                                     <Label layoutX="18.0" layoutY="216.0" prefHeight="18.0" prefWidth="200.0" text="Categoría">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="15.0" layoutY="241.0" prefHeight="30.0" prefWidth="200.0" />
+                                    <ComboBox fx:id="addProduct_category" layoutX="15.0" layoutY="241.0" prefHeight="30.0" prefWidth="200.0" />
                                     <Label layoutX="16.0" layoutY="340.0" prefHeight="18.0" prefWidth="200.0" text="Precio:">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="24.0" layoutY="431.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="add-btn" text="Agregar" />
+                                    <Button fx:id="addProduct_addBtn" layoutX="24.0" layoutY="431.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="add-btn" text="Agregar" />
                                     <Label layoutX="15.0" layoutY="284.0" prefHeight="18.0" prefWidth="200.0" text="Cantidad:">
                                        <font>
                                           <Font name="Tahoma" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="15.0" layoutY="302.0" prefHeight="30.0" prefWidth="200.0" />
-                                    <Button layoutX="124.0" layoutY="431.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="update-btn" text="Actualizar" />
-                                    <Button layoutX="24.0" layoutY="488.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="clear-btn" text="Limpiar" />
-                                    <Button layoutX="124.0" layoutY="488.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="delete-btn" text="Eliminar" />
-                                    <TextField layoutX="17.0" layoutY="358.0" prefHeight="30.0" prefWidth="200.0" />
+                                    <TextField fx:id="addProduct_amount" layoutX="15.0" layoutY="302.0" prefHeight="30.0" prefWidth="200.0" />
+                                    <Button fx:id="addProduct_updateBtn" layoutX="124.0" layoutY="431.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="update-btn" text="Actualizar" />
+                                    <Button fx:id="addProduct_clearBtn" layoutX="24.0" layoutY="488.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="clear-btn" text="Limpiar" />
+                                    <Button fx:id="addProduct_deleteBtn" layoutX="124.0" layoutY="488.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="91.0" styleClass="delete-btn" text="Eliminar" />
+                                    <TextField fx:id="addProduct_cost" layoutX="17.0" layoutY="358.0" prefHeight="30.0" prefWidth="200.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="263.0" layoutY="14.0" prefHeight="633.0" prefWidth="730.0" stylesheets="@dashboard.css">
@@ -265,16 +266,16 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TextField layoutX="11.0" layoutY="6.0" prefHeight="30.0" prefWidth="336.0" promptText="Buscar" styleClass="search" />
-                                    <TableView layoutX="11.0" layoutY="44.0" prefHeight="577.0" prefWidth="710.0">
+                                    <TextField fx:id="addProduct_searchBar" layoutX="11.0" layoutY="6.0" prefHeight="30.0" prefWidth="336.0" promptText="Buscar" styleClass="search" />
+                                    <TableView fx:id="addProduct_tableView" layoutX="11.0" layoutY="44.0" prefHeight="577.0" prefWidth="710.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="Código" />
-                                        <TableColumn prefWidth="140.0" text="Marca" />
-                                          <TableColumn prefWidth="107.0" text="Nombre" />
-                                          <TableColumn prefWidth="119.0" text="Categoría" />
-                                          <TableColumn prefWidth="38.0" text="Stock" />
-                                          <TableColumn prefWidth="88.0" text="Precio" />
-                                          <TableColumn prefWidth="141.0" text="Última actualización" />
+                                        <TableColumn fx:id="addProduct_col_code" prefWidth="75.0" text="Código" />
+                                        <TableColumn fx:id="addProduct_col_brand" prefWidth="140.0" text="Marca" />
+                                          <TableColumn fx:id="addProduct_col_name" prefWidth="107.0" text="Nombre" />
+                                          <TableColumn fx:id="addProduct_col_category" prefWidth="119.0" text="Categoría" />
+                                          <TableColumn fx:id="addProduct_col_availableStock" prefWidth="38.0" text="Stock" />
+                                          <TableColumn fx:id="addProduct_col_cost" prefWidth="88.0" text="Precio" />
+                                          <TableColumn fx:id="addProduct_col_lastUpdated" prefWidth="141.0" text="Última actualización" />
                                       </columns>
                                     </TableView>
                                     <FontAwesomeIconView glyphName="SEARCH" layoutX="19.0" layoutY="27.0" size="1.5em" />
@@ -282,8 +283,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <FontAwesomeIconView />
-                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
+                        <AnchorPane fx:id="employees_form" layoutX="14.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -295,15 +295,15 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView layoutX="14.0" layoutY="14.0" prefHeight="374.0" prefWidth="957.0">
+                                    <TableView fx:id="employees_tableView" layoutX="14.0" layoutY="14.0" prefHeight="374.0" prefWidth="957.0">
                                       <columns>
-                                        <TableColumn prefWidth="96.0" text="ID" />
-                                        <TableColumn prefWidth="162.0" text="Nombre de usuario" />
-                                          <TableColumn prefWidth="223.0" text="Nombre" />
-                                          <TableColumn prefWidth="195.0" text="Apellido (s)" />
-                                          <TableColumn prefWidth="88.0" text="Género" />
-                                          <TableColumn prefWidth="85.0" text="Sucursal" />
-                                          <TableColumn prefWidth="106.0" text="Fecha de alta" />
+                                        <TableColumn fx:id="employees_col_employeeID" prefWidth="96.0" text="ID" />
+                                        <TableColumn fx:id="employees_col_username" prefWidth="162.0" text="Nombre de usuario" />
+                                          <TableColumn fx:id="employees_col_firstName" prefWidth="223.0" text="Nombre" />
+                                          <TableColumn fx:id="employees_col_lastName" prefWidth="195.0" text="Apellido (s)" />
+                                          <TableColumn fx:id="employees_col_gender" prefWidth="88.0" text="Género" />
+                                          <TableColumn fx:id="employees_co_store" prefWidth="85.0" text="Sucursal" />
+                                          <TableColumn fx:id="employees_col_date" prefWidth="106.0" text="Fecha de alta" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -313,25 +313,25 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="155.0" layoutY="433.0" prefHeight="30.0" />
+                              <TextField fx:id="employees_employeeID" layoutX="155.0" layoutY="433.0" prefHeight="30.0" />
                               <Label layoutX="70.0" layoutY="484.0" text="Contraseña:">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="155.0" layoutY="479.0" prefHeight="30.0" />
+                              <TextField fx:id="employees_password" layoutX="155.0" layoutY="479.0" prefHeight="30.0" />
                               <Label layoutX="385.0" layoutY="437.0" text="Nombre (s):">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="470.0" layoutY="433.0" prefHeight="30.0" />
+                              <TextField fx:id="employees_firstName" layoutX="470.0" layoutY="433.0" prefHeight="30.0" />
                               <Label layoutX="385.0" layoutY="484.0" text="Apellido (s):">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="470.0" layoutY="479.0" prefHeight="30.0" />
+                              <TextField fx:id="employees_lastName" layoutX="470.0" layoutY="479.0" prefHeight="30.0" />
                               <Label layoutX="690.0" layoutY="437.0" text="Género:">
                                  <font>
                                     <Font size="15.0" />
@@ -342,15 +342,15 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <ComboBox layoutX="748.0" layoutY="433.0" prefHeight="30.0" prefWidth="150.0" />
-                              <ComboBox layoutX="748.0" layoutY="480.0" prefHeight="30.0" prefWidth="150.0" />
-                              <Button layoutX="872.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="add-btn" text="Guardar" />
-                              <Button layoutX="747.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="update-btn" text="Actualizar" />
-                              <Button layoutX="585.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="clear-btn" text="Limpiar" />
-                              <Button layoutX="469.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="delete-btn" text="Borrar" />
+                              <ComboBox fx:id="employees_gender" layoutX="748.0" layoutY="433.0" prefHeight="30.0" prefWidth="150.0" />
+                              <ComboBox fx:id="employees_store" layoutX="748.0" layoutY="480.0" prefHeight="30.0" prefWidth="150.0" />
+                              <Button fx:id="employees_saveBtn" layoutX="872.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="add-btn" text="Guardar" />
+                              <Button fx:id="employees_updateBtn" layoutX="747.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="update-btn" text="Actualizar" />
+                              <Button fx:id="employees_clearBtn" layoutX="585.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="clear-btn" text="Limpiar" />
+                              <Button fx:id="employees_deleteBtn" layoutX="469.0" layoutY="563.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="101.0" styleClass="delete-btn" text="Borrar" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
+                        <AnchorPane fx:id="orders_form" layoutX="14.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -362,15 +362,14 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView layoutX="14.0" layoutY="14.0" prefHeight="326.0" prefWidth="957.0">
+                                    <TableView fx:id="orders_tableView" layoutX="14.0" layoutY="14.0" prefHeight="326.0" prefWidth="957.0">
                                        <columns>
-                                          <TableColumn prefWidth="96.0" text="ID Orden" />
-                                          <TableColumn prefWidth="162.0" text="Sucursal" />
-                                          <TableColumn prefWidth="147.0" text="Solicitante" />
-                                          <TableColumn prefWidth="139.0" text="Fecha" />
-                                          <TableColumn prefWidth="152.0" text="Estado" />
-                                          <TableColumn prefWidth="153.0" text="Detalle de orden" />
-                                          <TableColumn prefWidth="106.0" text="Acciones" />
+                                          <TableColumn fx:id="orders_col_orderId" prefWidth="96.0" text="ID Orden" />
+                                          <TableColumn fx:id="orders_col_store" prefWidth="162.0" text="Sucursal" />
+                                          <TableColumn fx:id="orders_col_employee" prefWidth="147.0" text="Solicitante" />
+                                          <TableColumn fx:id="orders_col_date" prefWidth="139.0" text="Fecha" />
+                                          <TableColumn fx:id="orders_col_status" prefWidth="254.0" text="Estado" />
+                                          <TableColumn prefWidth="157.0" text="Acciones" />
                                        </columns>
                                     </TableView>
                                  </children>
@@ -419,37 +418,37 @@
                                           <Font name="Tahoma" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="564.0">
+                                    <TableView fx:id="orders_newOrder__TableView" layoutX="14.0" layoutY="55.0" prefHeight="200.0" prefWidth="564.0">
                                        <columns>
-                                          <TableColumn prefWidth="75.0" text="ID" />
-                                          <TableColumn prefWidth="147.0" text="Nombre" />
-                                          <TableColumn prefWidth="153.0" text="Cantidad" />
-                                          <TableColumn prefWidth="187.0" text="Stock disponible" />
+                                          <TableColumn fx:id="orders_newOrder__col_orderId" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="orders_newOrder__col_name" prefWidth="147.0" text="Nombre" />
+                                          <TableColumn fx:id="orders_newOrder__col_amount" prefWidth="153.0" text="Cantidad" />
+                                          <TableColumn fx:id="orders_newOrder__col_availableStock" prefWidth="187.0" text="Stock disponible" />
                                        </columns>
                                     </TableView>
                                     <Label layoutX="636.0" layoutY="29.0" text="ID de Producto:" />
-                                    <TextField layoutX="730.0" layoutY="14.0" prefHeight="30.0" />
+                                    <TextField fx:id="orders_productId" layoutX="730.0" layoutY="14.0" prefHeight="30.0" />
                                     <Label alignment="CENTER_RIGHT" layoutX="636.0" layoutY="71.0" prefHeight="17.0" prefWidth="90.0" text="Nombre:" />
-                                    <TextField layoutX="730.0" layoutY="56.0" prefHeight="30.0" />
+                                    <TextField fx:id="orders_productName" layoutX="730.0" layoutY="56.0" prefHeight="30.0" />
                                     <Label alignment="CENTER_RIGHT" layoutX="636.0" layoutY="113.0" prefHeight="17.0" prefWidth="90.0" text="Cantidad:" />
-                                    <TextField layoutX="730.0" layoutY="98.0" prefHeight="30.0" />
-                                    <Button layoutX="374.0" layoutY="5.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="93.0" styleClass="update-btn" text="Confirmar" />
-                                    <Button layoutX="601.0" layoutY="155.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="add-btn" text="Añadir" />
-                                    <Button layoutX="601.0" layoutY="214.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="clear-btn" text="Limpiar" />
-                                    <Button layoutX="756.0" layoutY="155.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="update-btn" text="Guardar" />
-                                    <Button layoutX="756.0" layoutY="214.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="delete-btn" text="Eliminar" />
+                                    <TextField fx:id="orders_productAmount" layoutX="730.0" layoutY="98.0" prefHeight="30.0" />
+                                    <Button fx:id="orders_confirmBtn" layoutX="374.0" layoutY="5.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="93.0" styleClass="update-btn" text="Confirmar" />
+                                    <Button fx:id="orders_addProductBtn" layoutX="601.0" layoutY="155.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="add-btn" text="Añadir" />
+                                    <Button fx:id="orders_clearProductBtn" layoutX="601.0" layoutY="214.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="clear-btn" text="Limpiar" />
+                                    <Button fx:id="orders_saveProductBtn" layoutX="756.0" layoutY="155.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="update-btn" text="Guardar" />
+                                    <Button fx:id="orders_deleteProductBtn" layoutX="756.0" layoutY="214.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" styleClass="delete-btn" text="Eliminar" />
                                     <Label layoutX="133.0" layoutY="17.0" text="Sucursal">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="194.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" />
-                                    <Button layoutX="478.0" layoutY="5.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="93.0" styleClass="delete-btn" text="Cancelar" />
+                                    <ComboBox fx:id="orders_store" layoutX="194.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" />
+                                    <Button fx:id="orders_cancelBtn" layoutX="478.0" layoutY="5.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="93.0" styleClass="delete-btn" text="Cancelar" />
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
+                        <AnchorPane fx:id="deposit_form" layoutX="13.0" layoutY="14.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -471,15 +470,15 @@
                                           <Font name="Berlin Sans FB" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="14.0" layoutY="101.0" prefHeight="30.0" prefWidth="150.0" />
+                                    <ComboBox fx:id="deposit_category" layoutX="14.0" layoutY="101.0" prefHeight="30.0" prefWidth="150.0" />
                                     <Label layoutX="188.0" layoutY="76.0" text="Referencia*">
                                        <font>
                                           <Font name="Berlin Sans FB" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="188.0" layoutY="102.0" prefHeight="30.0" />
-                                    <DatePicker layoutX="367.0" layoutY="102.0" prefHeight="30.0" styleClass="combo-box" />
-                                    <TextField layoutX="576.0" layoutY="102.0" prefHeight="30.0" />
+                                    <TextField fx:id="deposit_referenceNumber" layoutX="188.0" layoutY="102.0" prefHeight="30.0" />
+                                    <DatePicker fx:id="deposit_date" layoutX="367.0" layoutY="102.0" prefHeight="30.0" styleClass="combo-box" />
+                                    <TextField fx:id="deposit_amount" layoutX="576.0" layoutY="102.0" prefHeight="30.0" />
                                     <Label layoutX="367.0" layoutY="76.0" text="Fecha">
                                        <font>
                                           <Font name="Berlin Sans FB" size="14.0" />
@@ -490,7 +489,7 @@
                                           <Font name="Berlin Sans FB" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="791.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Registrar depósito" />
+                                    <Button fx:id="deposit_confirm" layoutX="791.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Registrar depósito" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="14.0" layoutY="181.0" prefHeight="440.0" prefWidth="955.0">
@@ -499,20 +498,20 @@
                                     <String fx:value="white-bg" />
                                  </styleClass>
                                  <children>
-                                    <TableView layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="928.0">
+                                    <TableView fx:id="deposit_tableView" layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="928.0">
                                       <columns>
-                                        <TableColumn prefWidth="225.0" text="Referencia" />
-                                        <TableColumn prefWidth="196.0" text="Tipo de depósito" />
-                                          <TableColumn prefWidth="198.0" text="Fecha" />
-                                          <TableColumn minWidth="6.0" prefWidth="162.0" text="Monto" />
-                                          <TableColumn minWidth="0.0" prefWidth="145.0" text="Usuario" />
+                                        <TableColumn fx:id="deposit_col_reference" prefWidth="225.0" text="Referencia" />
+                                        <TableColumn fx:id="deposit_col_category" prefWidth="196.0" text="Tipo de depósito" />
+                                          <TableColumn fx:id="deposit_col_date" prefWidth="198.0" text="Fecha" />
+                                          <TableColumn fx:id="deposit_col_amount" minWidth="6.0" prefWidth="162.0" text="Monto" />
+                                          <TableColumn fx:id="deposit_col_username" minWidth="0.0" prefWidth="145.0" text="Usuario" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="12.0" layoutY="15.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
+                        <AnchorPane fx:id="withdrawal_form" layoutX="12.0" layoutY="15.0" prefHeight="631.0" prefWidth="980.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -534,9 +533,9 @@
                                           <Font name="Berlin Sans FB" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="14.0" layoutY="101.0" prefHeight="30.0" prefWidth="150.0" />
-                                    <TextField layoutX="188.0" layoutY="102.0" prefHeight="30.0" />
-                                    <TextField layoutX="368.0" layoutY="102.0" prefHeight="30.0" />
+                                    <ComboBox fx:id="withdrawal_category" layoutX="14.0" layoutY="101.0" prefHeight="30.0" prefWidth="150.0" />
+                                    <TextField fx:id="withdrawal_amount" layoutX="188.0" layoutY="102.0" prefHeight="30.0" />
+                                    <TextField fx:id="withdrawal_availableAmount" layoutX="368.0" layoutY="102.0" prefHeight="30.0" />
                                     <Label layoutX="188.0" layoutY="76.0" text="Monto a retirar*">
                                        <font>
                                           <Font name="Berlin Sans FB" size="14.0" />
@@ -547,7 +546,7 @@
                                           <Font name="Berlin Sans FB" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="555.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Confimar retiro" />
+                                    <Button fx:id="withdrawal_confirmBtn" layoutX="555.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Confimar retiro" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="14.0" layoutY="181.0" prefHeight="440.0" prefWidth="955.0">
@@ -556,20 +555,20 @@
                                     <String fx:value="white-bg" />
                                  </styleClass>
                                  <children>
-                                    <TableView layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="928.0">
+                                    <TableView fx:id="withdrawal_tableView" layoutX="14.0" layoutY="14.0" prefHeight="414.0" prefWidth="928.0">
                                        <columns>
-                                          <TableColumn prefWidth="187.0" text="No. de autorización" />
-                                          <TableColumn prefWidth="234.0" text="Categoría" />
-                                          <TableColumn prefWidth="198.0" text="Fecha" />
-                                          <TableColumn minWidth="6.0" prefWidth="162.0" text="Monto" />
-                                          <TableColumn minWidth="0.0" prefWidth="145.0" text="Usuario" />
+                                          <TableColumn fx:id="withdrawal_col_authorizationNumber" prefWidth="187.0" text="No. de autorización" />
+                                          <TableColumn fx:id="withdrawal_col_categoryNumber" prefWidth="234.0" text="Categoría" />
+                                          <TableColumn fx:id="withdrawal_col_Date" prefWidth="198.0" text="Fecha" />
+                                          <TableColumn fx:id="withdrawal_col_amount" minWidth="6.0" prefWidth="162.0" text="Monto" />
+                                          <TableColumn fx:id="withdrawal_col_username" minWidth="0.0" prefWidth="145.0" text="Usuario" />
                                        </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="15.0" layoutY="11.0" prefHeight="633.0" prefWidth="976.0" stylesheets="@dashboard.css" visible="false">
+                        <AnchorPane fx:id="sales_form" layoutX="15.0" layoutY="11.0" prefHeight="633.0" prefWidth="976.0" stylesheets="@dashboard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -588,7 +587,7 @@
                                                 <Font name="Berlin Sans FB" size="20.0" />
                                              </font>
                                           </Label>
-                                          <BarChart layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
+                                          <BarChart fx:id="sales_chart_salesPerPerson" layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -611,7 +610,7 @@
                                           <Font name="Berlin Sans FB" size="20.0" />
                                        </font>
                                     </Label>
-                                    <BarChart layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
+                                    <BarChart fx:id="sales_chart_salesPerStore" layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
                                        <xAxis>
                                           <CategoryAxis side="BOTTOM" />
                                        </xAxis>
@@ -632,7 +631,7 @@
                                           <Font name="Berlin Sans FB" size="20.0" />
                                        </font>
                                     </Label>
-                                    <BarChart layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
+                                    <BarChart fx:id="sales_chart_salesPerProduct" layoutX="14.0" layoutY="33.0" prefHeight="228.0" prefWidth="287.0">
                                        <xAxis>
                                           <CategoryAxis side="BOTTOM" />
                                        </xAxis>
@@ -653,7 +652,7 @@
                                           <Font name="Berlin Sans FB" size="20.0" />
                                        </font>
                                     </Label>
-                                    <BarChart layoutX="14.0" layoutY="33.0" prefHeight="268.0" prefWidth="896.0">
+                                    <BarChart fx:id="sales_chart_TotalSales" layoutX="14.0" layoutY="33.0" prefHeight="268.0" prefWidth="896.0">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>
@@ -665,19 +664,19 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="12.0" layoutY="11.0" prefHeight="635.0" prefWidth="980.0">
+                        <AnchorPane fx:id="stores_form" layoutX="12.0" layoutY="11.0" prefHeight="635.0" prefWidth="980.0" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <AnchorPane prefHeight="58.0" prefWidth="980.0">
+                              <AnchorPane fx:id="store_form" prefHeight="122.0" prefWidth="980.0">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <Button layoutX="855.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" styleClass="add-btn" text="Agregar">
+                                    <Button fx:id="store_addBtn" layoutX="726.0" layoutY="17.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" styleClass="add-btn" text="Agregar">
                                        <graphic>
                                           <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
                                        </graphic>
@@ -688,14 +687,114 @@
                                           <Font name="Berlin Sans FB" size="20.0" />
                                        </font>
                                     </Label>
+                                    <TextField fx:id="store_name" layoutX="14.0" layoutY="71.0" prefHeight="30.0" />
+                                    <Label layoutX="14.0" layoutY="55.0" text="Nombre*">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="store_address" layoutX="193.0" layoutY="72.0" prefHeight="30.0" />
+                                    <Label layoutX="193.0" layoutY="55.0" text="Dirección">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="store_phone" layoutX="365.0" layoutY="72.0" prefHeight="30.0" />
+                                    <Label layoutX="365.0" layoutY="56.0" text="Teléfono">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="store_email" layoutX="550.0" layoutY="72.0" prefHeight="30.0" />
+                                    <Label layoutX="550.0" layoutY="56.0" text="Email">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="store_removeBtn" layoutX="831.0" layoutY="17.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="97.0" styleClass="delete-btn" text="Eliminar">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="REMOVE" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="store_updateBtn" layoutX="726.0" layoutY="67.0" mnemonicParsing="false" prefHeight="40.0" styleClass="update-btn" text="Actualizar">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="store_clearBtn" layoutX="831.0" layoutY="67.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="98.0" styleClass="clear-btn" text="Limpiar">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="TRASH" />
+                                       </graphic>
+                                    </Button>
                                  </children>
                               </AnchorPane>
-                              <TableView layoutX="14.0" layoutY="71.0" prefHeight="555.0" prefWidth="955.0">
+                              <TableView fx:id="store_tableView" layoutX="14.0" layoutY="136.0" prefHeight="490.0" prefWidth="955.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Nombre" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn fx:id="store_col_name" prefWidth="75.0" text="Nombre" />
+                                  <TableColumn fx:id="store_col_address" prefWidth="247.0" text="Dirección" />
+                                    <TableColumn fx:id="store_col_phone" prefWidth="247.0" text="Teléfono" />
+                                    <TableColumn fx:id="store_col_email" prefWidth="247.0" text="Email" />
+                                    <TableColumn fx:id="store_col_delete" prefWidth="137.0" text="Eliminar " />
                                 </columns>
                               </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="profile_form" layoutX="12.0" layoutY="11.0" prefHeight="637.0" prefWidth="983.0" stylesheets="@dashboard.css" visible="false">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <AnchorPane layoutX="15.0" layoutY="10.0" prefHeight="143.0" prefWidth="957.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="profile_updateBtn" layoutX="723.0" layoutY="38.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0" styleClass="update-btn" text="Actualizar">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                    <TextField fx:id="profile_firstName" layoutX="125.0" layoutY="30.0" prefHeight="30.0" />
+                                    <Label layoutX="125.0" layoutY="14.0" text="Nombre">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profile_lastName" layoutX="125.0" layoutY="88.0" prefHeight="30.0" />
+                                    <Label layoutX="125.0" layoutY="72.0" text="Apellidos">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profile_phone" layoutX="307.0" layoutY="30.0" prefHeight="30.0" />
+                                    <Label layoutX="307.0" layoutY="14.0" text="Teléfono">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="profile_email" layoutX="307.0" layoutY="88.0" prefHeight="30.0" />
+                                    <Label layoutX="307.0" layoutY="72.0" text="Email">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIconView glyphName="USER" layoutX="14.0" layoutY="94.0" size="8em" wrappingWidth="97.57142639160156" />
+                                    <Label layoutX="508.0" layoutY="14.0" text="Contraseña">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <PasswordField fx:id="profile_password" layoutX="508.0" layoutY="33.0" />
+                                    <Label layoutX="508.0" layoutY="72.0" text="Nombre de usuario">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <PasswordField fx:id="profile_username" layoutX="508.0" layoutY="91.0" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
