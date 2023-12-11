@@ -8,15 +8,15 @@ public class productData {
     private String productId;
     private String brand;
     private String productName;
-    private String category;
+    private Category category;
     private Double price;
     private int units;
 
-    public productData(String productId, String brand, String productName, String category, Double price, int units) {
+    public productData(String productId, String brand, String productName, String category, int categoryId, Double price, int units) {
         this.productId = productId;
         this.brand = brand;
         this.productName = productName;
-        this.category = category;
+        this.category = new Category(categoryId, category);
         this.price = price;
         this.units = units;
     }
@@ -45,11 +45,11 @@ public class productData {
         this.productName = productName;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

@@ -447,6 +447,7 @@ public class adminDashBoardController implements Initializable {
                         result.getString("brand"),
                         result.getString("product_name"),
                         result.getString("categoryName"),
+                        result.getInt("category_id"),
                         result.getDouble("price"),
                         result.getInt("units")
                         );

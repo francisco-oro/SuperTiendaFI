@@ -97,7 +97,6 @@ public class LoginController implements Initializable {
         try {
             Alert alert;
             prepare = connect.prepareStatement(employeeData);
-
             if (customer_username.getText().isEmpty() ||
                     customer_password.getText().isEmpty()){
                 alert = new Alert(Alert.AlertType.ERROR);
