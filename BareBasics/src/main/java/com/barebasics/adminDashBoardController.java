@@ -429,6 +429,73 @@ public class adminDashBoardController implements Initializable {
     private Statement statement;
     private ResultSet result;
 
+    public void addProductsAdd() {
+        String insertProduct = "INSERT INTO product (product_id, brand, product_name, price, category_id, units) " +
+                "VALUES (?, ?, ?, ?, ?, ?);";
+
+        connect = database.connectDb();
+
+        try {
+            Alert alert;
+
+            if (addProduct_code.getText().isEmpty()
+            || addProduct_brand.getText().isEmpty()
+            || addProduct_name.getText().isEmpty()
+            || addProduct_cost.getText().isEmpty()
+            || addProduct_amount.getText().isEmpty()
+            || addProduct_category.getValue() == null) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Mensaje de error");
+                alert.setHeaderText(null);
+                alert.setContentText("Por favor llena todos los campos vacíos");
+                alert.showAndWait();
+            }
+
+            else {
+                String check = "SELECT * FROM product WHERE product_id = " +
+                        addProduct_code.getText() + ";";
+
+                statement = connect.createStatement();
+                result = statement.executeQuery(check);
+                if (result.next()) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Mensaje de error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("El producto con ID: " + addProduct_code.getText() + "ya ha sido agregado. Por favor use el botón actualizar ");
+                    alert.showAndWait();
+                }
+                prepare = connect.prepareStatement(insertProduct);
+                prepare.setString(1, addProduct_code.getText());
+                prepare.setString(2, addProduct_brand.getText());
+                prepare.setString(3, addProduct_name.getText());
+                prepare.setString(4, addProduct_cost.getText());
+                prepare.setString(5, addProduct_category.getSelectionModel().getSelectedIndex() + "");
+                prepare.setString(6, addProduct_amount.getText());
+
+                prepare.executeUpdate();
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Mensaje informativo");
+                alert.setHeaderText(null);
+                alert.setContentText("Producto guardado exitosamente");
+                alert.showAndWait();
+
+//                Update the tableview once new record is inserted
+                addProductsShowData();
+                addProductsClear();
+            }
+
+
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+// Clear addproducts panel fields
+    public void addProductsClear() {
+        addProduct_code.setText("");
+        addProduct_name.setText("");
+        addProduct_cost.setText("");
+        addProduct_amount.setText("");
+        addProduct_amount.setText("");
+    }
     public ObservableList<productData> addProductsListData() {
         ObservableList<productData> prodList = FXCollections.observableArrayList();
 
@@ -510,6 +577,7 @@ public class adminDashBoardController implements Initializable {
         addProduct_name.setText(prod.getProductName());
         addProduct_cost.setText(prod.getPrice().toString());
         addProduct_category.setValue(prod.getCategory());
+        addProduct_amount.setText(prod.getUnits() + "");
     }
     public void logout(){
         try {

@@ -210,7 +210,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="addProduct_form" layoutX="141.0" layoutY="118.0" prefHeight="555.0" prefWidth="903.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="addProduct_form" layoutX="141.0" layoutY="118.0" prefHeight="555.0" prefWidth="903.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="634.0" prefWidth="239.0" stylesheets="@dashboard.css">
                                  <styleClass>
@@ -267,7 +267,7 @@
                                  </styleClass>
                                  <children>
                                     <TextField fx:id="addProduct_searchBar" layoutX="11.0" layoutY="6.0" prefHeight="30.0" prefWidth="336.0" promptText="Buscar" styleClass="search" />
-                                    <TableView fx:id="addProduct_tableView" layoutX="11.0" layoutY="44.0" prefHeight="577.0" prefWidth="710.0">
+                                    <TableView fx:id="addProduct_tableView" layoutX="11.0" layoutY="44.0" onMouseClicked="#addProductsSelect" prefHeight="577.0" prefWidth="710.0">
                                       <columns>
                                         <TableColumn fx:id="addProduct_col_code" prefWidth="75.0" text="Código" />
                                         <TableColumn fx:id="addProduct_col_brand" prefWidth="140.0" text="Marca" />

@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9b1d988-d56d-4a24-af11-cd18de1d36f6" name="Default Changelist" comment="implemented admin dashboard navbar loginc" />
+    <list default="true" id="b9b1d988-d56d-4a24-af11-cd18de1d36f6" name="Default Changelist" comment="implemented admin dashboard navbar loginc">
+      <change afterPath="$PROJECT_DIR$/assets/admin_login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/deposit_dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/employees_dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/orders_dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/products_dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/profile_dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sales_dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/stores_dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/withdrawal_dashboard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BareBasics/src/main/java/com/barebasics/adminDashBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BareBasics/src/main/java/com/barebasics/adminDashBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BareBasics/src/main/resources/com/barebasics/adminDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BareBasics/src/main/resources/com/barebasics/adminDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,25 +77,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/lenovo/source/repos/SuperTiendaFI/BareBasics&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/lenovo/source/repos/SuperTiendaFI/assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\source\repos\SuperTiendaFI\assets" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -97,6 +116,7 @@
       <workItem from="1701752717174" duration="163000" />
       <workItem from="1702137375244" duration="8234000" />
       <workItem from="1702187296548" duration="212000" />
+      <workItem from="1702270048361" duration="200000" />
     </task>
     <task id="LOCAL-00001" summary="implemented admin dashboard navbar loginc">
       <created>1702187384785</created>

@@ -22,8 +22,14 @@ The app is developed using JavaFX and Font Awesome FX libraries, and uses MySQL 
 
 ## Gallery
 ![login](assets/login_form.png)
-![orders](assets/admin_orders.png)
-
+![deposit](assets/deposit_dashboard.png)
+![orders](assets/orders_dashboard.png)
+![employees](assets/employees_dashboard.png)
+![products](assets/products_dashboard.png)
+![profile](assets/profile_dashboard.png)
+![sales](assets/sales_dashboard.png)
+![stores](assets/stores_dashboard.png)
+![withdrawal](assets/withdrawal_dashboard.png)
 ## License
 This project is licensed under the [BSD-3-Clause license](https://github.com/francisco-oro/SuperTiendaFI/blob/main/LICENSE)
 
